@@ -44,20 +44,21 @@ shopt -s checkwinsize histappend
 
 
 # Prompt
-__prompt_command() {
-    local exit=$?
-
-    PS1="\n\[\e[48;2;24;24;37m\]\[\e[K\]"
-    PS1+="\[\e[38;2;137;180;250m\]${HOSTNAME%.*}\[\e[39m\]"
-    if [[ $exit != 0 ]]; then
-        PS1+="  \[\e[38;2;235;160;172m\]$exit\[\e[39m\]"
-    else
-        PS1+="  \[\e[38;2;166;227;161m\]$exit\[\e[39m\]"
-    fi
-    PS1+="  \[\e[38;2;245;224;220;3m\]\w"
-    # newline, clear the line, move the cursor up, and newline again
-    # this ensures the shell does not clear the line when redrawing the prompt line
-    PS1+="\n\[\e[0m\]\[\e[K\]\[\e[F\]\n"
-    PS1+="\[\e[38;2;180;190;254m\]\$\[\e[0m\] "
-}
-PROMPT_COMMAND=__prompt_command
+#__prompt_command() {
+#    local exit=$?
+#
+#    PS1="\n\[\e[48;2;24;24;37m\]\[\e[K\]"
+#    PS1+="\[\e[38;2;137;180;250m\]${HOSTNAME%.*}\[\e[39m\]"
+#    if [[ $exit != 0 ]]; then
+#        PS1+="  \[\e[38;2;235;160;172m\]$exit\[\e[39m\]"
+#    else
+#        PS1+="  \[\e[38;2;166;227;161m\]$exit\[\e[39m\]"
+#    fi
+#    PS1+="  \[\e[38;2;245;224;220;3m\]\w"
+#    # newline, clear the line, move the cursor up, and newline again
+#    # this ensures the shell does not clear the line when redrawing the prompt line
+#    PS1+="\n\[\e[0m\]\[\e[K\]\[\e[F\]\n"
+#    PS1+="\[\e[38;2;180;190;254m\]\$\[\e[0m\] "
+#}
+#PROMPT_COMMAND=__prompt_command
+eval "$(starship init bash)"
