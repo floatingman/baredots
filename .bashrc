@@ -61,4 +61,7 @@ shopt -s checkwinsize histappend
 #    PS1+="\[\e[38;2;180;190;254m\]\$\[\e[0m\] "
 #}
 #PROMPT_COMMAND=__prompt_command
+# Load zoxide
+eval "$(zoxide init bash)"
+# Load starship
 eval "$(starship init bash)"
