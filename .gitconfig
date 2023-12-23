@@ -191,3 +191,5 @@
     today = log --stat --since=\"1 Day Ago\" --graph --pretty=oneline --abbrev-commit --date=relative
 [url "git@github.com:floatingman"]
     insteadOf = https://github.com/floatingman
+[init]
+	defaultBranch = main

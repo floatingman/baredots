@@ -92,8 +92,8 @@ full_symbol = ""
 charging_symbol = ""
 discharging_symbol = ""
 
-[docker]
-symbol = " "
+# [docker]
+# symbol = " "
 
 [conda]
 symbol = " "
