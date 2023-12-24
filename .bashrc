@@ -74,5 +74,8 @@ eval "$(zoxide init bash)"
 # Load starship
 eval "$(starship init bash)"
 
-#Startup blesh
+# Startup blesh
 [[ ${BLE_VERSION-} ]] && ble-attach
+
+# Start Sway
+[ "$(tty)" = "/dev/tty1" ] && exec sway
