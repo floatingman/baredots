@@ -78,4 +78,4 @@ eval "$(starship init bash)"
 [[ ${BLE_VERSION-} ]] && ble-attach
 
 # Start Sway
-[ "$(tty)" = "/dev/tty1" ] && exec sway
+#[ "$(tty)" = "/dev/tty1" ] && exec sway
