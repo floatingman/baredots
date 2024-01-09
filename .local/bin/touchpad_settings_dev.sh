@@ -17,6 +17,9 @@ touchpadID=11
 # boolean
 xinput set-prop "$touchpadID" "Device Enabled" 1
 
+# Enable natural scrolling
+xinput set-prop "$touchpadID" "libinput Natural Scrolling Enabled" 1
+
 # Enable tap to click
 xinput set-prop "$touchpadID" "libinput Tapping Enabled" 1
 
