@@ -15,3 +15,10 @@ dotfiles config --local status.showUntrackedFiles no
 dotfiles checkout
 dotfiles submodule update --init --recursive
 ```
+
+## Steps for setup
+### BLESH
+```bash
+git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
+make -C ble.sh install PREFIX=~/.local
+```
