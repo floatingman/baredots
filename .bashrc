@@ -55,6 +55,9 @@ shopt -s autocd
 # Don't overwrite existing files by redirection
 set -o noclobber
 
+# Load private things
+[[ -f "$HOME/.bash_private" ]] && . "$HOME/.bash_private"
+
 # Load zoxide
 eval "$(zoxide init bash)"
 
