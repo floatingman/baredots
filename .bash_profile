@@ -1,17 +1,13 @@
-# BEGIN ANSIBLE MANAGED BLOCK
 if [ -f ~/.bashrc ]; then
 	source ~/.bashrc
 fi
-# END ANSIBLE MANAGED BLOCK
-# BEGIN ANSIBLE MANAGED BLOCK: pyenv
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-# END ANSIBLE MANAGED BLOCK: pyenv
+[[ -s "$HOME/.pyenv/bin/pyenv" ]] && eval "$(pyenv init --path)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# Added by Toolbox App
-export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+[[ -d "$HOME/.local/share/JetBrains" ]] && export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
