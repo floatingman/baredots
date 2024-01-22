@@ -4,7 +4,6 @@
 
 - [BLESH](https://github.com/akinomyoga/ble.sh)
 - [Starship](https://starship.rs)
-- [TPM](https://github.com/tmux-plugins/tpm)
 
 ## Installing
 
