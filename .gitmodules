@@ -4,3 +4,6 @@
 [submodule "/home/dnewman/.config/nvim"]
 	path = /home/dnewman/.config/nvim
 	url = git@github.com:floatingman/nvim.git
+[submodule "/home/dnewman/.config/tmux"]
+	path = /home/dnewman/.config/tmux
+	url = git@github.com:floatingman/.tmux.git
