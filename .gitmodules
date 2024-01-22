@@ -1,9 +1,9 @@
 [submodule "tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "/home/dnewman/.config/nvim"]
-	path = /home/dnewman/.config/nvim
+[submodule ".config/nvim"]
+	path = .config/nvim
 	url = git@github.com:floatingman/nvim.git
-[submodule "/home/dnewman/.config/tmux"]
-	path = /home/dnewman/.config/tmux
+[submodule ".config/tmux"]
+	path = .config/tmux
 	url = git@github.com:floatingman/.tmux.git
