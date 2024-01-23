@@ -1,6 +1,12 @@
-if [ -f ~/.bashrc ]; then
-	source ~/.bashrc
+if [ -f "$HOME/.bashrc" ]; then
+	source "$HOME/.bashrc"
 fi
+
+[ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
+
+[ -d "$HOME/.local/bin" ] && export PATH=$PATH:"$HOME/.local/bin"
+
+[ -d "$HOME/.bin" ] && export PATH=$PATH:"$HOME/.bin"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"

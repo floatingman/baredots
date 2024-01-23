@@ -5,7 +5,7 @@
 
 # Load blesh
 # [[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
-[[ -d $HOME/.local/share/blesh ]] && source $HOME/.local/share/blesh/ble.sh
+[[ -d $HOME/.local/share/blesh ]] && source "$HOME/.local/share/blesh/ble.sh"
 
 # User specific aliases, environment, and functions
 homebrew="$(command -v {/opt/homebrew,/usr/local}/bin/brew 2>/dev/null)"
@@ -20,13 +20,13 @@ if [[ -n $homebrew ]]; then
 fi
 unset homebrew
 
-if [[ $OSTYPE = darwin* ]] && [[ $TERM = tmux-256color ]]; then
-	export TERMINFO="$HOME/.local/share/terminfo"
-	if ! [[ $TERMINFO/74/tmux-256color -nt $HOME/.config/dotfiles/tmux-256color.terminfo ]]; then
-		mkdir -p "$TERMINFO"
-		/usr/bin/tic -x "$HOME/.config/dotfiles/tmux-256color.terminfo"
-	fi
-fi
+# if [[ $OSTYPE = darwin* ]] && [[ $TERM = tmux-256color ]]; then
+# 	export TERMINFO="$HOME/.local/share/terminfo"
+# 	if ! [[ $TERMINFO/74/tmux-256color -nt $HOME/.config/dotfiles/tmux-256color.terminfo ]]; then
+# 		mkdir -p "$TERMINFO"
+# 		/usr/bin/tic -x "$HOME/.config/dotfiles/tmux-256color.terminfo"
+# 	fi
+# fi
 
 # Aliases
 [[ -f ~/.config/shell/aliases ]] && . ~/.config/shell/aliases
