@@ -1,0 +1,3 @@
+# Launch application launcher
+super + space
+  rofi -show run
