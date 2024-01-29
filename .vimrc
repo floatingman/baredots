@@ -62,6 +62,7 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'andymass/vim-matchup'
 Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 call plug#end()
 
 
@@ -112,13 +113,18 @@ set ttyfast
 " Set the minimum number of lines to keep above and below cursor
 set scrolloff=5
 
+" Set termcolors
+set termguicolors
+
+" Set colortheme
+:colorscheme catppuccin_mocha
 
 """"""""""""""""
 " Line Numbers "
 """"""""""""""""
 
-" Default to absolute line numbers.
-set nu
+" Default to relative line numbers.
+set relativenumber
 
 
 """"""""
