@@ -5,6 +5,8 @@ Xft.hinting: true
 Xft.rgba: rgb
 Xft.hintstyle: hintslight
 
+! Catpuccin Mocha colors
+
 *background: #1E1E2E
 *foreground: #CDD6F4
 
