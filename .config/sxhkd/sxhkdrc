@@ -1,3 +1,7 @@
 # Launch application launcher
 super + space
   rofi -show run
+
+# Show window switcher
+alt + Tab
+  rofi -show window

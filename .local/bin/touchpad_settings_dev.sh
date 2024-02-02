@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-touchpadString="SYNA30D2:00 06CB:CE08"
+# touchpadString="SYNA30D2:00 06CB:CE08"
 # touchpadString="VMware VMware Virtual USB Mouse"
 # touchpadID=$(xinput list | grep -m 1 "$touchpadString" | awk -F " " '{print $5}' | awk -F "=" '{print $2}')
 touchpadID=11
@@ -24,7 +24,7 @@ xinput set-prop "$touchpadID" "libinput Natural Scrolling Enabled" 1
 xinput set-prop "$touchpadID" "libinput Tapping Enabled" 1
 
 # Enable tap and drag
-xinput set-prop "$touchpadID" 328 1
+xinput set-prop "$touchpadID" "libinput Tapping Drag Lock Enabled" 1
 
 # Emulate middle clicking
-xinput set-prop "$touchpadID" 324 0
+xinput set-prop "$touchpadID" "libinput Middle Emulation Enabled" 1
