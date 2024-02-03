@@ -5,7 +5,7 @@
 sxhkd &
 
 # load touchpad updates
-~/.local/bin/touchpad_settings_dev.sh
+# ~/.local/bin/touchpad_settings_dev.sh
 
 # Launch the screen locker.
 xautolock -time 09 -locker "/usr/local/bin/lock" -detectsleep -secure -corners 0-00 -cornerdelay 3 -cornerredelay 20 &

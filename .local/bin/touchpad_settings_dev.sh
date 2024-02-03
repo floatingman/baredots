@@ -18,13 +18,16 @@ touchpadID=11
 xinput set-prop "$touchpadID" "Device Enabled" 1
 
 # Enable natural scrolling
-xinput set-prop "$touchpadID" "libinput Natural Scrolling Enabled" 1
+# xinput set-prop "$touchpadID" "libinput Natural Scrolling Enabled" 1
 
 # Enable tap to click
-xinput set-prop "$touchpadID" "libinput Tapping Enabled" 1
+# xinput set-prop "$touchpadID" "libinput Tapping Enabled" 1
 
 # Enable tap and drag
-xinput set-prop "$touchpadID" "libinput Tapping Drag Lock Enabled" 1
+xinput set-prop "$touchpadID" "Synaptics Locked Drags" 1
+
+# Enable palm detection
+xinput set-prop "$touchpadID" "Synaptics Palm Detection"
 
 # Emulate middle clicking
-xinput set-prop "$touchpadID" "libinput Middle Emulation Enabled" 1
+# xinput set-prop "$touchpadID" "libinput Middle Emulation Enabled" 1
