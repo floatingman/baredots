@@ -1,10 +1,10 @@
 [window]
 decorations = "None"
-opacity = 0.5
+opacity = 1
 
 [font]
-normal = { family = "JetbrainsMono", style = "Regular" }
-size = 14
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 16
 
 [colors]
 [colors.primary]
