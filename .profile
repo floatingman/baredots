@@ -26,15 +26,15 @@ export LANG='en_US.UTF-8'
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
 # Set GPG TTY
-export GPG_TTY
-GPG_TTY=$(tty)
+# export GPG_TTY
+# GPG_TTY=$(tty)
 
 # Use GPG for SSH Agent
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-	export SSH_AUTH_SOCK
-	SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
+# unset SSH_AGENT_PID
+# if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+# 	export SSH_AUTH_SOCK
+# 	SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+# fi
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
