@@ -42,6 +42,9 @@ super + m
 ################
 # Applications
 ################
+# Launch web browser
+super + w
+    firefox -P default-release
 
 # Launch application launcher
 super + space
@@ -122,3 +125,9 @@ control + shift + space
 # Redisplay last message
 control + grave
     dunstctl history-pop
+
+#############
+# Clipboard #
+#############
+super + shift + c
+  rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
