@@ -55,3 +55,7 @@ Desktop.ini
 # Local .env file #
 ###################
 .env
+
+# Test results #
+################
+results.xml
