@@ -36,5 +36,8 @@ autorandr --change --default default
 # Udiskie for mounting.
 udiskie &
 
+# Synology Drive Client
+synology-drive &
+
 # Blueman for bluetooth
 blueman-applet &

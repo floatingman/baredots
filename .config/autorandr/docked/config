@@ -10,7 +10,7 @@ output DisplayPort-3
 off
 output DisplayPort-5
 off
-output DisplayPort-4
+output DisplayPort-6
 crtc 2
 mode 2560x1440
 pos 0x0
@@ -22,7 +22,7 @@ x-prop-tearfree auto
 x-prop-underscan off
 x-prop-underscan_hborder 0
 x-prop-underscan_vborder 0
-output DisplayPort-6
+output DisplayPort-4
 crtc 0
 mode 2560x1440
 pos 0x1440

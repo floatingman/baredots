@@ -99,7 +99,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # move current workspace to different output
-bindsym $mod+x move workspace to output right
+bindsym $mod+x move workspace to output up
 
 # mark windows
 mode "focused" {
@@ -232,7 +232,7 @@ hide_edge_borders both
 
 # Assign MPV to workspace 4 and focus
 assign [class="mpv"] 3
-# for_window [class="mpv"] focus
+for_window [class="mpv"] focus
 
 # include $HOME/.config/i3/themes/catpuccin-frappe
 # include $HOME/.config/i3/themes/catpuccin-latte
