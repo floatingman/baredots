@@ -26,3 +26,11 @@ curl -sS https://starship.rs/install.sh | sh
 git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
 make -C ble.sh install PREFIX=~/.local
 ```
+
+### Zoxide
+Install with package manager
+
+For Example: Debian
+```bash
+sudo apt install zoxide
+```
