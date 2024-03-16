@@ -3,7 +3,7 @@
 # touchpadString="SYNA30D2:00 06CB:CE08"
 # touchpadString="VMware VMware Virtual USB Mouse"
 # touchpadID=$(xinput list | grep -m 1 "$touchpadString" | awk -F " " '{print $5}' | awk -F "=" '{print $2}')
-touchpadID=11
+touchpadID=12
 #trackpointString="TPPS/2 Elan TrackPoint"
 # trackpointID=$(xinput list | grep "$trackpointString" | awk -F " " '{print $6}' | awk -F "=" '{print $2}')
 

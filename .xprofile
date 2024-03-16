@@ -41,3 +41,6 @@ synology-drive &
 
 # Blueman for bluetooth
 blueman-applet &
+
+# Synergy
+com.symless.synergy &
