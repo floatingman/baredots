@@ -4,8 +4,11 @@
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 
 # Load blesh
-# [[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
-[[ -d $HOME/.local/share/blesh ]] && source "$HOME/.local/share/blesh/ble.sh"
+if $_isarch; then
+	[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
+else
+	[[ -d $HOME/.local/share/blesh ]] && source "$HOME/.local/share/blesh/ble.sh"
+fi
 
 # User specific aliases, environment, and functions
 homebrew="$(command -v {/opt/homebrew,/usr/local}/bin/brew 2>/dev/null)"

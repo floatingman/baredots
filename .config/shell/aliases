@@ -7,21 +7,23 @@
 # is $1 installed?
 _have() { which "$1" &>/dev/null; }
 
-# Detect which platform we are on
-_islinux=false
-[[ "$(uname -s)" =~ Linux ]] && _islinux=true
-_ismac=false
-[[ "$(uname -s)" =~ Darwin ]] && _ismac=true
-_isubuntu=false
-[[ "$(uname -v)" =~ Ubuntu ]] && _isubuntu=true
-_isarch=false
-[[ -f /etc/arch-release ]] && _isarch=true
-# Detect if gui is running
-_isxrunning=false
-[[ -n "$DISPLAY" ]] && _isxrunning=true
-# Detect if root
-_isroot=false
-[[ $UID -eq 0 ]] && _isroot=true
+bind -x '"\C-l":clear'
+
+# # Detect which platform we are on
+# _islinux=false
+# [[ "$(uname -s)" =~ Linux ]] && _islinux=true
+# _ismac=false
+# [[ "$(uname -s)" =~ Darwin ]] && _ismac=true
+# _isubuntu=false
+# [[ "$(uname -v)" =~ Ubuntu ]] && _isubuntu=true
+# _isarch=false
+# [[ -f /etc/arch-release ]] && _isarch=true
+# # Detect if gui is running
+# _isxrunning=false
+# [[ -n "$DISPLAY" ]] && _isxrunning=true
+# # Detect if root
+# _isroot=false
+# [[ $UID -eq 0 ]] && _isroot=true
 
 ##########
 # Editor #
@@ -148,9 +150,9 @@ fi
 #########
 alias \
   srcbash='source $HOME/.bashrc' \
+  eb='$EDITOR $HOME/.bashrc' \
   srczsh='source $HOME/.zshrc' \
   cls="clear" \
-  ..='cd ..' \
   cd3='cd ../../..' \
   cd4='cd ../../../..' \
   cd5='cd ../../../../../' \
@@ -216,7 +218,7 @@ alias ka='killall'       # Shorten kill all
 
 # adding flags
 alias df='df -h'                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB
+# alias free='free -m'                      # show sizes in MB
 alias lynx='lynx -cfg=~/.lynx/lynx.cfg -lss=~/.lynx/lynx.lss -vikeys'
 alias vifm='./.config/vifm/scripts/vifmrun'
 

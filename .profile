@@ -1,3 +1,21 @@
+# Used in other dotfiles
+
+# Detect which platform we are on
+_islinux=false
+[[ "$(uname -s)" =~ Linux ]] && _islinux=true
+_ismac=false
+[[ "$(uname -s)" =~ Darwin ]] && _ismac=true
+_isubuntu=false
+[[ "$(uname -v)" =~ Ubuntu ]] && _isubuntu=true
+_isarch=false
+[[ -f /etc/arch-release ]] && _isarch=true
+# Detect if gui is running
+_isxrunning=false
+[[ -n "$DISPLAY" ]] && _isxrunning=true
+# Detect if root
+_isroot=false
+[[ $UID -eq 0 ]] && _isroot=true
+
 #
 # Terminal
 #

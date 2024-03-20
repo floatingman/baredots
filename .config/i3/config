@@ -2,7 +2,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-include $HOME/.config/i3/colors
+include $HOME/.config/i3/themes/catpuccin-mocha
 
 # Set the mod key
 #
@@ -237,5 +237,5 @@ for_window [class="mpv"] focus
 # include $HOME/.config/i3/themes/catpuccin-frappe
 # include $HOME/.config/i3/themes/catpuccin-latte
 # include $HOME/.config/i3/themes/catpuccin-macchiato
-include $HOME/.config/i3/themes/catpuccin-mocha
+# include $HOME/.config/i3/themes/catpuccin-mocha
 
