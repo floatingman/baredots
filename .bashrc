@@ -72,3 +72,11 @@ eval "$(starship init bash)"
 
 # Start Sway
 #[ "$(tty)" = "/dev/tty1" ] && exec sway
+
+if [[ ! "$PATH" == */home/dnewman/.fzf/bin* ]]; then
+	PATH="${PATH:+${PATH}:}/home/dnewman/.fzf/bin"
+fi
+
+if [[ -d "$HOME/.fzf/bin/" ]]; then
+	eval "$(fzf --bash)"
+fi
