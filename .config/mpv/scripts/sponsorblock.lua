@@ -14,14 +14,14 @@ local options = {
 	categories = "sponsor,intro,outro,interaction,selfpromo,filler",
 
 	-- Categories to skip automatically
-	skip_categories = "sponsor",
+	skip_categories = "intro,sponsor,outro,filler,selfpromo",
 
 	-- If true, sponsored segments will only be skipped once
 	skip_once = true,
 
 	-- Note that sponsored segments may ocasionally be inaccurate if this is turned off
 	-- see https://blog.ajay.app/voting-and-pseudo-randomness-or-sponsorblock-or-youtube-sponsorship-segment-blocker
-	local_database = false,
+	local_database = true,
 
 	-- Update database on first run, does nothing if local_database is false
 	auto_update = true,
@@ -178,11 +178,10 @@ end
 function create_chapter(chapter_title, chapter_time)
 	local chapters = mp.get_property_native("chapter-list")
 	local duration = mp.get_property_native("duration")
-	table.insert(
-		chapters,
-		{ title = chapter_title, time = (duration == nil or duration > chapter_time) and chapter_time
-			or duration - 0.001 }
-	)
+	table.insert(chapters, {
+		title = chapter_title,
+		time = (duration == nil or duration > chapter_time) and chapter_time or duration - 0.001,
+	})
 	table.sort(chapters, time_sort)
 	mp.set_property_native("chapter-list", chapters)
 end
@@ -429,20 +428,17 @@ function vote(dir)
 end
 
 function update()
-	mp.command_native_async(
-		{
-			name = "subprocess",
-			playback_only = false,
-			args = {
-				options.python_path,
-				sponsorblock,
-				"update",
-				database_file,
-				options.server_address,
-			},
+	mp.command_native_async({
+		name = "subprocess",
+		playback_only = false,
+		args = {
+			options.python_path,
+			sponsorblock,
+			"update",
+			database_file,
+			options.server_address,
 		},
-		getranges
-	)
+	}, getranges)
 end
 
 function file_loaded()
