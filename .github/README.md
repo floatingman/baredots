@@ -34,3 +34,18 @@ For Example: Debian
 ```bash
 sudo apt install zoxide
 ```
+
+### MPV
+MPV needs a some libraries for subtitle activities. On Arch this will be handled by my configuration management repo. For other Distros, you will need:
+
+#### Subliminal
+A python library for fetching subtitles from online providers
+
+#### Certifi
+A python library for handling security certifidates
+
+#### Trash-Cli
+A command line trash utility for deleting files
+
+#### FFSubSync or ALass
+Python libraries for handling subtitle syncronization
