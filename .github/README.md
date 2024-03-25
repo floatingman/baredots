@@ -48,4 +48,7 @@ A python library for handling security certifidates
 A command line trash utility for deleting files
 
 #### FFSubSync or ALass
-Python libraries for handling subtitle syncronization
+Libraries for handling subtitle syncronization
+
+FFSubSync can be installed in Unix OSs with something like `pipx`
+Alass can be downloaded from it's github repo and put in your path [link](https://github.com/kaegi/alass)
