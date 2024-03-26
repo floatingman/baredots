@@ -145,25 +145,26 @@
     icon_position = off
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /usr/share/icons/hicolor/16x16/status/:/usr/share/icons/hicolor/16x16/devices/
 
     # Frame
     frame_width = 1
-    frame_color = "#a89984"
+    frame_color = "#89B4FA"
 
 [urgency_low]
-    background = "#282828"
-    foreground = "#a89984"
-    timeout = 10
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+timeout = 10
 
 [urgency_normal]
-    background = "#282828"
-    foreground = "#ebdbb2"
-    timeout = 10
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+timeout = 10
 
 [urgency_critical]
-    background = "#282828"
-    foreground = "#fb4934"
-    timeout = 0
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+frame_color = "#FAB387"
+timeout = 0
 
 # vim: ft=cfg
