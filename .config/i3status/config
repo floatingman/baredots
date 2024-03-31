@@ -18,9 +18,11 @@ general {
 }
 
 # order += "ipv6"
+order += "arch_updates"
 order += "backlight"
 # order += "disk /home"
-order += "wireless _first_"
+order += "wifi"
+# order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery all"
 # order += "cpu_usage"
@@ -29,9 +31,17 @@ order += "battery all"
 order += "load"
 order += "volume master"
 order += "tztime local"
+order += "xrandr"
 
+xrandr {
+  on_click 1 = "exec arandr"
+}
 backlight {
         cache_timeout = 5
+}
+
+arch_updates {
+  hide_if_zero = True
 }
 
 cpu_usage {
@@ -55,6 +65,10 @@ disk "/" {
         format = " ⛁ %avail "
 }
 
+wifi {
+  on_click 1 = "exec i3-sensible-terminal -e nmtui"
+}
+
 wireless _first_ {
         format_up = "W:%quality %essid %ip"
         # format_up = "W: (%quality at %essid, %bitrate) %ip"
@@ -73,8 +87,8 @@ battery all {
         format_down = "No battery"
         last_full_capacity = true
         integer_battery_capacity = true
-        status_chr = ""
-        # status_chr = "⚡CHR"
+        # status_chr = ""
+        status_chr = "⚡CHR"
         status_bat = " BAT"
         status_unk = ""
         status_full = "☻ FULL"

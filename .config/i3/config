@@ -200,8 +200,11 @@ bindsym --whole-window button10 workspace next
 bindsym --whole-window button11 workspace prev
 
 # Show taskwarrior tasks.
-for_window [title="^taskwin$"] floating enable
-bindsym $mod+t exec alacritty --title taskwin -e ~/bin/display_tasks.sh
+# for_window [title="^taskwin$"] floating enable
+# bindsym $mod+t exec alacritty --title taskwin -e ~/bin/display_tasks.sh
+
+# Float arandr
+for_window [title="Screen Layout Editor"] floating enable
 
 # Float pinit windows
 for_window [title="^pinit$"] floating enable
