@@ -128,8 +128,8 @@ local settings = {
   --allow the playlist cursor to loop from end to start and vice versa
   loop_cursor = true,
 
-  --youtube-dl executable for title resolving if enabled, probably "youtube-dl" or "yt-dlp", can be absolute path
-  youtube_dl_executable = "youtube-dl",
+  --yt-dlp executable for title resolving if enabled, probably "yt-dlp" or "yt-dlp", can be absolute path
+  youtube_dl_executable = "yt-dlp",
 
   -- allow playlistmanager to write watch later config when navigating between files
   allow_write_watch_later_config = true,
@@ -143,7 +143,7 @@ local settings = {
   --prefer to display titles for following files: "all", "url", "none". Sorting still uses filename.
   prefer_titles = "url",
 
-  --call youtube-dl to resolve the titles of urls in the playlist
+  --call yt-dlp to resolve the titles of urls in the playlist
   resolve_url_titles = false,
 
   --call ffprobe to resolve the titles of local files in the playlist (if they exist in the metadata)

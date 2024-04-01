@@ -326,17 +326,17 @@ alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 # receive the key of a developer
 alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 
-# youtube-dl
-if _have youtube-dl; then
-    alias yta-aac="youtube-dl --extract-audio --audio-format aac "
-    alias yta-best="youtube-dl --extract-audio --audio-format best "
-    alias yta-flac="youtube-dl --extract-audio --audio-format flac "
-    alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "
-    alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
-    alias yta-opus="youtube-dl --extract-audio --audio-format opus "
-    alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
-    alias yta-wav="youtube-dl --extract-audio --audio-format wav "
-    alias ytv-best="youtube-dl -f bestvideo+bestaudio "
+# yt-dlp
+if _have yt-dlp; then
+    alias yta-aac="yt-dlp --extract-audio --audio-format aac "
+    alias yta-best="yt-dlp --extract-audio --audio-format best "
+    alias yta-flac="yt-dlp --extract-audio --audio-format flac "
+    alias yta-m4a="yt-dlp --extract-audio --audio-format m4a "
+    alias yta-mp3="yt-dlp --extract-audio --audio-format mp3 "
+    alias yta-opus="yt-dlp --extract-audio --audio-format opus "
+    alias yta-vorbis="yt-dlp --extract-audio --audio-format vorbis "
+    alias yta-wav="yt-dlp --extract-audio --audio-format wav "
+    alias ytv-best="yt-dlp -f bestvideo+bestaudio "
 fi
 
 # MPV
@@ -361,13 +361,12 @@ cheat() {
 ###############
 # Colorscheme #
 ###############
-# Set alacritty terminal colors
-LIGHT_COLOR='solarized_light.yaml'
-DARK_COLOR='solarized_dark.yaml'
+# Set kitty terminal colors
+LIGHT_COLOR='Catppuccin-Latte'
+DARK_COLOR='Catppuccin-Mocha'
 
-alias day="alacritty-colorscheme -V apply $LIGHT_COLOR"
-alias night="alacritty-colorscheme -V apply $DARK_COLOR"
-alias toggle="alacritty-colorscheme -V toggle $LIGHT_COLOR $DARK_COLOR"
+alias day="kitten themes --reload-in=all $LIGHT_COLOR"
+alias night="kitten themes --reload-in=all $DARK_COLOR"
 
 # Interactively enable sdkman to manage java versions
 alias mach_java_mode="export SDKMAN_DIR='$HOME/.sdkman' && [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source '$HOME/.sdkman/bin/sdkman-init.sh'"
