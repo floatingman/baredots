@@ -21,6 +21,7 @@ general {
 order += "arch_updates"
 order += "backlight"
 # order += "disk /home"
+order += "mpd_status"
 order += "networkmanager"
 # order += "wifi"
 # order += "wireless _first_"
@@ -37,6 +38,7 @@ order += "tztime local"
 xrandr {
   on_click 1 = "exec arandr"
 }
+
 backlight {
         cache_timeout = 5
 }

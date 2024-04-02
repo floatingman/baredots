@@ -46,10 +46,11 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
 # History
 FIGNORE=DS_Store
-HISTCONTROL=ignoredups:erasedups
+HISTCONTROL=ignoreboth:ignoredups:erasedups
 HISTSIZE=500000
 HISTFILESIZE=50000000
 HISTTIMEFORMAT="%F %T  "
+HISTIGNORE='&:[ ]*:exit:[bf]g:rm*:mpv*:z*:cp*:mv*:ls:ll:la:clear:date:pwd:mpc*'
 shopt -s checkwinsize histappend
 
 # Directory Navigation
