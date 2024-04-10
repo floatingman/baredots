@@ -27,9 +27,9 @@ local settings = {
 	--if a eof reason is not allowed and deleteoneonly is true it will trigger without deleting the file
 	accepted_reasons = {
 		["eof"] = true, --The file has ended. This can (but doesn't have to) include incomplete files or broken network connections under circumstances.
-		["stop"] = false, --Playback was ended by a command.
-		["quit"] = false, --Playback was ended by sending the quit command.
-		["error"] = false, --An error happened. In this case, an error field is present with the error string.
+		["stop"] = true, --Playback was ended by a command.
+		["quit"] = true, --Playback was ended by sending the quit command.
+		["error"] = true, --An error happened. In this case, an error field is present with the error string.
 		["redirect"] = true, --Happens with playlists and similar. Details see MPV_END_FILE_REASON_REDIRECT in the C API.
 		["unknown"] = true, --Unknown. Normally doesn't happen, unless the Lua API is out of sync with the C API.
 	},

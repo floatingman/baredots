@@ -54,6 +54,10 @@ super + space
 alt + Tab
   rofi -show window
 
+# File Explorer 
+super + e
+  thunar
+
 # Launch rofi surfraw
 super + shift + f
     surfraw-rofi
