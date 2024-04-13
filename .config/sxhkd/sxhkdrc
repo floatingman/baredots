@@ -47,8 +47,10 @@ super + w
     firefox -P default-release
 
 # Launch application launcher
-super + space
-  rofi -show run
+super + {d,space,p,s}
+	sh $HOME/.config/rofi/bin/{launcher,runner,powermenu,screenshot}
+# super + space
+#   rofi -show run
 
 # Show window switcher
 alt + Tab
@@ -58,9 +60,9 @@ alt + Tab
 super + e
   thunar
 
-# Launch rofi surfraw
-super + shift + f
-    surfraw-rofi
+# # Launch rofi surfraw
+# super + shift + f
+#     surfraw-rofi
 
 # Launch rofi surfraw
 super + f
@@ -81,11 +83,7 @@ super + z
 
 # Lock the screen
 super + l
-    /usr/local/bin/lock
-
-# Lock the screen
-XF86ScreenSaver
-    /usr/local/bin/lock
+  betterlockscreen -l dim
 
 # Change screen brightness
 XF86MonBrightnessUp
@@ -95,12 +93,12 @@ XF86MonBrightnessDown
     brightnessctl set 5%-
 
 # Take a screenshot
-Print
-    flameshot full -p ~/www
-super + s
-    flameshot gui
-super + shift + s
-    teiler
+# Print
+#     flameshot full -p ~/www
+# super + s
+#     flameshot gui
+# super + shift + s
+#     teiler
 
 # OCR a screen selection.
 super + shift + t
@@ -135,3 +133,7 @@ control + grave
 #############
 super + shift + c
   rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
+# Reload sxhdrc
+super + shift + r
+  pkill -usr1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'

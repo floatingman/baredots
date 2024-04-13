@@ -10,20 +10,20 @@ _have() { which "$1" &>/dev/null; }
 bind -x '"\C-l":clear'
 
 # # Detect which platform we are on
-# _islinux=false
-# [[ "$(uname -s)" =~ Linux ]] && _islinux=true
-# _ismac=false
-# [[ "$(uname -s)" =~ Darwin ]] && _ismac=true
-# _isubuntu=false
-# [[ "$(uname -v)" =~ Ubuntu ]] && _isubuntu=true
-# _isarch=false
-# [[ -f /etc/arch-release ]] && _isarch=true
-# # Detect if gui is running
-# _isxrunning=false
-# [[ -n "$DISPLAY" ]] && _isxrunning=true
-# # Detect if root
-# _isroot=false
-# [[ $UID -eq 0 ]] && _isroot=true
+_islinux=false
+[[ "$(uname -s)" =~ Linux ]] && _islinux=true
+_ismac=false
+[[ "$(uname -s)" =~ Darwin ]] && _ismac=true
+_isubuntu=false
+[[ "$(uname -v)" =~ Ubuntu ]] && _isubuntu=true
+_isarch=false
+[[ -f /etc/arch-release ]] && _isarch=true
+# Detect if gui is running
+_isxrunning=false
+[[ -n "$DISPLAY" ]] && _isxrunning=true
+# Detect if root
+_isroot=false
+[[ $UID -eq 0 ]] && _isroot=true
 
 ##########
 # Editor #
@@ -51,18 +51,13 @@ fi
 ######################
 # Package Management #
 ######################
-if [[ ! $_ismac ]];
-then
-  version=$(cat /etc/issue)
-  if [[ $version =~ "Manjaro" || $version =~ "Arch Linux" ]]
-  then
-    alias \
-        pacup='sudo pacman -Syu' \
-        pacin='sudo pacman -S' \
-        pacls='pacman -Q' \
-        pacse='pacman -Ss' \
-        pacrm='sudo pacman -Rss' \
-        paccl='sudo pacman -Rsn $(${AUR_MANAGER:-pacman} -Qdtq)'
+if $_isarch; then
+    alias pacup='sudo pacman -Syu' 
+    alias pacin='sudo pacman -S' 
+    alias pacls='pacman -Q' 
+    alias pacse='pacman -Ss' 
+    alias pacrm='sudo pacman -Rss' 
+    alias paccl='sudo pacman -Rsn $(${AUR_MANAGER:-pacman} -Qdtq)'
     alias p="sudo pacman"
     alias pacman='sudo pacman --color always'
     alias paci='sudo pacman -S'               # install
@@ -83,29 +78,16 @@ then
     alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages
     # For when keys break
     alias archlinx-fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
-  elif [[ $version =~ "SUSE" ]]
-  then
-          alias \
-        pacup='sudo zypper up' \
-        pacin='sudo zypper in' \
-        pacls='rpm -qa' \
-        pacshow='sudo rpm -qi' \
-        pacfiles='sudo rpm -ql' \
-        pacse='zypper se' \
-        pacrm='sudo zypper rm -u' \
-        pacdisup='sudo zypper dup' \
-        pacrepos='sudo zypper lr'
-  else
-      alias \
-        pacup='sudo apt-get update && sudo apt-get upgrade' \
-        pacin='sudo apt-get install' \
-        pacls='dpkg --get-selections' \
-        pacse='sudo apt-cache search' \
-        pacrm='sudo apt-get remove' \
-        pacautorm='sudo apt-get autoremove' \
-        pacdisup='sudo apt-get update && sudo apt-get dist-upgrade' \
-        pacpurge='sudo apt-get purge'
-  fi
+else
+   alias \
+      pacup='sudo apt-get update && sudo apt-get upgrade' \
+      pacin='sudo apt-get install' \
+      pacls='dpkg --get-selections' \
+      pacse='sudo apt-cache search' \
+      pacrm='sudo apt-get remove' \
+      pacautorm='sudo apt-get autoremove' \
+      pacdisup='sudo apt-get update && sudo apt-get dist-upgrade' \
+      pacpurge='sudo apt-get purge'
 fi
 
 alias \
@@ -115,6 +97,7 @@ alias \
 	weath='less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport'
 
 if _have yay; then
+    alias y="yay"
     alias yaysua="yay -Sua --noconfirm"              # update only AUR pkgs
     alias yaysyu="yay -Syu --noconfirm"              # update standard pkgs and AUR pkgs
 fi

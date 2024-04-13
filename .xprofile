@@ -8,7 +8,7 @@ sxhkd &
 # ~/.local/bin/touchpad_settings_dev.sh
 
 # Launch the screen locker.
-xautolock -time 09 -locker "/usr/local/bin/lock" -detectsleep -secure -corners 0-00 -cornerdelay 3 -cornerredelay 20 &
+xidlehook --not-when-audio --not-when-fullscreen --timer 360 "betterlockscreen -l dim" "" &
 
 # Restore the desktop background.
 if [ -f ~/.fehbg ]; then
