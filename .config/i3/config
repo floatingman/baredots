@@ -182,7 +182,21 @@ bindsym $mod+r mode "resize"
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 # exec_always --no-startup-id ff-theme-util
 # exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id sxhkd
+exec_always --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 360 "betterlockscreen -l dim" "" 
+exec_always --no-startup-id mpd 
+exec_always --no-startup-id unclutter
+exec_always --no-startup-id udiskie
+exec_always --no-startup-id synology-drive
+exec_always --no-startup-id autorandr --change --default mobile
 exec_always --no-startup-id autotiling
+exec_always --no-startup-id dunst
+exec_always --no-startup-id pasystray
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id redswitch -g
+exec_always --no-startup-id blueman-applet 
+exec_always --no-startup-id com.symless.synergy
+
 
 
 # Automatic workspace switching back-and-forth.
