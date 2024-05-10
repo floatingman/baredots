@@ -7,3 +7,4 @@ concourse 7.11.2
 packer 1.10.2
 minikube 1.32.0
 aws-vault 7.2.0
+golang 1.22.3
