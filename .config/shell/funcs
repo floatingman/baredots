@@ -1598,3 +1598,14 @@ get_lbname(){
 drop_awslb(){
 	aws elbv2 delete-load-balancer --load-balancer-arn "$1" # aws cli doesn't seem to support multiple arns? 
 }
+
+# Delete a given line number in the known_hosts file.
+knownrm() {
+ re='^[0-9]+$'
+ if ! [[ $1 =~ $re ]] ; then
+   echo "error: line number missing" >&2;
+ else
+   sed -i "$1d" ~/.ssh/known_hosts
+ fi
+}
+

@@ -7,7 +7,7 @@
 # is $1 installed?
 _have() { which "$1" &>/dev/null; }
 
-bind -x '"\C-l":clear'
+# bind -x '"\C-l":clear'
 
 # # Detect which platform we are on
 _islinux=false

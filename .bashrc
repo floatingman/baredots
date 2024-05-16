@@ -50,6 +50,7 @@ fi
 [[ -f "$HOME/.asdf/asdf.sh" ]] && . "$HOME/.asdf/asdf.sh"
 [[ -f "$HOME/.asdf/completions/asdf.bash" ]] && . "$HOME/.asdf/completions/asdf.bash"
 
+# completion for dotfiles command
 alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 [[ $(type -t __git_complete) = function ]] && __git_complete dotfiles git
 
@@ -90,3 +91,4 @@ fi
 if [[ -d "$HOME/.fzf/bin/" ]]; then
 	eval "$(fzf --bash)"
 fi
+. "$HOME/.cargo/env"
