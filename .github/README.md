@@ -2,7 +2,6 @@
 
 ## Prerequistes
 
-- [BLESH](https://github.com/akinomyoga/ble.sh)
 - [Starship](https://starship.rs)
 
 ## Installing
@@ -12,6 +11,12 @@ git clone --bare https://github.com/floatingman/baredots.git ~/.dotfiles.git
 alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no
 dotfiles checkout
+if [ $? = 0 ]; then
+  echo "Checked out dotfiles.";
+  else
+    echo "Backing up pre-existing dot files.";
+    dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
+fi;
 dotfiles submodule update --init --recursive
 ```
 
@@ -19,12 +24,6 @@ dotfiles submodule update --init --recursive
 ### Starship
 ```bash
 curl -sS https://starship.rs/install.sh | sh
-```
-
-### BLESH
-```bash
-git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
-make -C ble.sh install PREFIX=~/.local
 ```
 
 ### Zoxide
