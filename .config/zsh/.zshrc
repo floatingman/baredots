@@ -70,8 +70,10 @@ command -v direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)"
 # load mac things if there
 [ -f "$HOME/.zsh_mac" ] && source "$HOME/.zsh_mac"
 
+
+# Set up fzf key bindings and fuzzy completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'                # find file and cd to selected directory
+# bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'                # find file and cd to selected directory
 
 
 # Setup dotfiles bare repository usuage

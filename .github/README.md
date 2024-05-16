@@ -26,6 +26,12 @@ dotfiles submodule update --init --recursive
 curl -sS https://starship.rs/install.sh | sh
 ```
 
+### FZF
+```bash
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+
 ### Zoxide
 Install with package manager
 
