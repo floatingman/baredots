@@ -13,7 +13,6 @@ export fpath=(~/.config/zsh/completions/ $fpath)
 [ -f $HOME/.config/shell/aliases ] && source $HOME/.config/shell/aliases
 [ -f $HOME/.shell/kubectl_aliases ] && source $HOME/.shell/kubectl_aliases
 [ -f $HOME/.config/shell/funcs ] && source $HOME/.config/shell/funcs
-[ -d $HOME/./shell/fzf-tab/ ] && source $HOME/.shell/fzf-tab/fzf-tab.plugin.zsh
 
 export LF_ICONS="\
 di=� :\

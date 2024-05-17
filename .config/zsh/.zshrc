@@ -117,6 +117,7 @@ zinit light zsh-users/zsh-completions
 zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit light agkozak/zsh-z
+zinit light Aloxaf/fzf-tab
 
 # Load starship theme
 # line 1: `starship` binary as command, from github release
