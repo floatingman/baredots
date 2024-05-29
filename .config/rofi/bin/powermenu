@@ -5,11 +5,11 @@ uptime=$(uptime -p | sed -e 's/up //g')
 
 # Options
 if [[ "$DIR" == "powermenus" ]]; then
-	shutdown=""
-	reboot=""
-	lock=""
-	suspend=""
-	logout=""
+	shutdown="⏻"
+	reboot="↺"
+	lock="🔒"
+	suspend="⏾"
+	logout="✘"
 	ddir="$HOME/.config/rofi/config"
 else
 
@@ -19,19 +19,17 @@ else
 	layout=`cat $HOME/.config/rofi/config/powermenu.rasi | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
 	if [[ "$layout" == "TRUE" ]]; then
   # Section 1
-
-		shutdown=""
-		reboot=""
-		lock=""
-		suspend=""
-		logout=""
+		shutdown="⏻"
+		reboot="↺"
+		lock="🔒"
+		suspend="⏾"
+		logout="✘"
   # Section 2
 #		shutdown="襤"
 #		reboot="ﰇ"
 #		lock=""
 #		suspend="鈴"
 #		logout=" "
-
 
 	else
   # Section 1
@@ -90,14 +88,14 @@ case $chosen in
         fi
         ;;
     $lock)
-        sh $HOME/.local/bin/lock
+		betterlockscreen -l dim
         ;;
     $suspend)
 		ans=$(rdialog &)
 		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
 			mpc -q pause
 			amixer set Master mute
-			sh $HOME/.local/bin/lock
+			/usr/local/bin/lock
 			systemctl suspend
 		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
 			exit

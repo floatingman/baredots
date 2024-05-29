@@ -47,10 +47,10 @@ super + w
     firefox -P default-release
 
 # Launch application launcher
-super + {d,space,p,s}
-	sh $HOME/.config/rofi/bin/{launcher,runner,powermenu,screenshot}
-# super + space
-#   rofi -show run
+super + {d,p,s}
+    sh $HOME/.config/rofi/bin/{launcher,powermenu,screenshot}
+super + space
+    sh $HOME/.config/rofi/bin/runner
 
 # Show window switcher
 alt + Tab
@@ -83,7 +83,7 @@ super + z
 
 # Lock the screen
 super + l
-  betterlockscreen -l dim
+    /usr/local/bin/lock
 
 # Change screen brightness
 XF86MonBrightnessUp
