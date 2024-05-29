@@ -14,3 +14,5 @@ typeset -gU cdpath fpath mailpath path
 #   fi
 #   eval "$(pyenv init --path)"
 # fi
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
