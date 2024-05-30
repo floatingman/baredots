@@ -91,6 +91,5 @@ fi
 if [[ -d "$HOME/.fzf/bin/" ]]; then
 	eval "$(fzf --bash)"
 fi
-. "$HOME/.cargo/env"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
