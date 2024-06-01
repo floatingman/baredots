@@ -15,4 +15,10 @@ typeset -gU cdpath fpath mailpath path
 #   eval "$(pyenv init --path)"
 # fi
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -d "/opt/homebrew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -d "~/.linuxbrew" ]; then
+  eval "$(~/.linuxbrew/bin/brew shellenv)"
+elif [ -d "/home/linuxbrew" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
