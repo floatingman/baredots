@@ -59,9 +59,9 @@ ex=:\
 *.nix=:\
 "
 
-if [[ $s(command -v rg) ]]; then
-    export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
-fi
+# if [[ $s(command -v rg) ]]; then
+#     export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
+# fi
 
 
 # Determine if we are an SSH connection
