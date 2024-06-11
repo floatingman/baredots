@@ -57,6 +57,12 @@ done
 
 unset config_files
 
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
 # source apps
 export _ZO_FZF_OPTS="$_FZF_DEFAULT_OPTS --select-1 --exit-0 --height=25% --reverse --no-sort --cycle"
 export _ZO_DATA_DIR=$HOME/.zoxide
@@ -72,10 +78,9 @@ command -v direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)"
 
 
 # Set up fzf key bindings and fuzzy completion
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
 # bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'                # find file and cd to selected directory
-
 
 # Setup dotfiles bare repository usuage
 alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'

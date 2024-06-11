@@ -18,6 +18,8 @@ _isubuntu=false
 [[ "$(uname -v)" =~ Ubuntu ]] && _isubuntu=true
 _isarch=false
 [[ -f /etc/arch-release ]] && _isarch=true
+_iswsl=false
+[[ "$(uname -r)" =~ WSL ]] && _iswsl=true
 # Detect if gui is running
 _isxrunning=false
 [[ -n "$DISPLAY" ]] && _isxrunning=true
@@ -88,6 +90,10 @@ else
       pacautorm='sudo apt-get autoremove' \
       pacdisup='sudo apt-get update && sudo apt-get dist-upgrade' \
       pacpurge='sudo apt-get purge'
+fi
+
+if _have batcat; then
+  alias bat='batcat'
 fi
 
 alias \
