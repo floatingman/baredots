@@ -24,7 +24,7 @@ while true; do
   check_plex_health
   # If the health check fails, restart the plex container
   if [ $? -ne 0 ]; then
-	sudo systemctl restart plexmediaserver.service
+    sudo systemctl restart plexmediaserver.service
   fi
   # Sleep for 3 minutes between each health check
   sleep 60
