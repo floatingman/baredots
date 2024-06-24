@@ -21,7 +21,7 @@
 debug=true
 
 # Working directory for the script
-ytdl_root_dir="${HOME}/SynologyDrive/Backup/ytdlrc"
+ytdl_root_dir="${HOME}/syncs/Sync/ytdlrc"
 
 # Where to download files before moving them to the rclone remote
 ytdl_download_dir="${HOME}/Videos"
