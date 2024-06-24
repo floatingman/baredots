@@ -76,6 +76,7 @@ export FZF_ALT_C_OPTS="
 export _ZO_FZF_OPTS="$_FZF_DEFAULT_OPTS --select-1 --exit-0 --height=25% --reverse --no-sort --cycle"
 export _ZO_DATA_DIR=$HOME/.zoxide
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+compdef __zoxide_z_complete j
 command -v direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)"
 [ -d $HOME/.config/broot/launcher/bash/br ] && source $HOME/.config/broot/launcher/bash/br
 

@@ -120,7 +120,6 @@ rclone_destination="local:/mnt/mediaexpansion/Video/YouTube"
 #           command
 #         * If debug=false, "-q" is appended to rclone command
 rclone_flags="--transfers 8 --checkers 16"
-# rclone_flags="--transfers 8 --checkers 16 --acd-upload-wait-per-gb 5m"
 
 # ---------- You probably don't need to edit anything below this ----------
 
@@ -212,23 +211,23 @@ download_all_the_things() {
       --config '$rclone_config' \
       $rclone_flags \
       $rclone_debug_flags" \
-		--format "$ytdl_format" \
-		--ignore-config \
-		--ignore-errors \
-		--no-overwrites \
-		--output "${ytdl_download_dir%/}/${video_value}/${ytdl_output_template}" \
-		--restrict-filenames \
-		--sleep-interval 10 \
-		--max-sleep-interval 30 \
-		--embed-thumbnail \
-		--cookies "~/SynologyDrive/Backup/youtube-dl/cookies.txt" \
-		--match-filter "!is_live & title != 'Liked videos' & title != 'Favorites'" \
-		--extractor-args youtube:player_client=android \
-		--merge-output-format "mkv" \
-		"$ytdl_debug_flags" \
-		$ytdl_subtitle_flags \
-		$ytdl_xattrs_flag \
-		"$1"
+    --format "$ytdl_format" \
+    --ignore-config \
+    --ignore-errors \
+    --no-overwrites \
+    --output "${ytdl_download_dir%/}/${video_value}/${ytdl_output_template}" \
+    --restrict-filenames \
+    --sleep-interval 10 \
+    --max-sleep-interval 30 \
+    --embed-thumbnail \
+    --cookies "~/SynologyDrive/Backup/youtube-dl/cookies.txt" \
+    --match-filter "!is_live & title != 'Liked videos' & title != 'Favorites'" \
+    --extractor-args youtube:player_client=ios,web\
+    --merge-output-format "mkv" \
+    "$ytdl_debug_flags" \
+    $ytdl_subtitle_flags \
+    $ytdl_xattrs_flag \
+    "$1"
 }
 
 check_rclone_version() {
