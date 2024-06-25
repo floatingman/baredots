@@ -57,6 +57,12 @@ done
 
 unset config_files
 
+# Setup dotfiles bare repository usuage
+alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+if [[ $(whence -w __git_complete) == 'function' ]]; then
+  __git_complete dotfiles git
+fi
+
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
@@ -92,11 +98,6 @@ command -v direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)"
 source <(fzf --zsh)
 # bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'                # find file and cd to selected directory
 
-# Setup dotfiles bare repository usuage
-alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
-if [[ $(whence -w __git_complete) == 'function' ]]; then
-  __git_complete dotfiles git
-fi
 
 
 # ZSH Plugins
