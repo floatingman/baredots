@@ -565,10 +565,13 @@ function navigate_playlist(delta)
 	if playlist and #playlist > 1 and pos then
 		local paths = itable_map(playlist, function(item) return normalize_path(item.filename) end)
 		local index = decide_navigation_in_list(paths, pos, delta)
-		if index then
-			mp.commandv('playlist-play-index', index - 1)
-			return true
-		end
+        if index then
+			if mp.get_property_native('save-position-on-quit') then
+				mp.command('write-watch-later-config')
+			end
+            mp.commandv('playlist-play-index', index - 1)
+            return true
+        end
 	end
 	return false
 end
@@ -782,18 +785,20 @@ end
 ---@return {[string]: table}|table
 function find_active_keybindings(key)
 	local bindings = mp.get_property_native('input-bindings', {})
-	local active = {} -- map: key-name -> bind-info
+	local active_map = {} -- map: key-name -> bind-info
+	local active_table = {}
 	for _, bind in pairs(bindings) do
 		if bind.owner ~= 'uosc' and bind.priority >= 0 and (not key or bind.key == key) and (
-				not active[bind.key]
-				or (active[bind.key].is_weak and not bind.is_weak)
-				or (bind.is_weak == active[bind.key].is_weak and bind.priority > active[bind.key].priority)
+				not active_map[bind.key]
+				or (active_map[bind.key].is_weak and not bind.is_weak)
+				or (bind.is_weak == active_map[bind.key].is_weak and bind.priority > active_map[bind.key].priority)
 			)
 		then
-			active[bind.key] = bind
+			active_table[#active_table + 1] = bind
+			active_map[bind.key] = bind
 		end
 	end
-	return not key and active or active[key]
+	return key and active_map[key] or active_table
 end
 
 ---@param type 'sub'|'audio'|'video'
@@ -850,7 +855,7 @@ function render()
 	if state.is_idle and not Manager.disabled.idle_indicator then
 		local smaller_side = math.min(display.width, display.height)
 		local center_x, center_y, icon_size = display.width / 2, display.height / 2, math.max(smaller_side / 4, 56)
-		ass:icon(center_x, center_y - icon_size / 4, icon_size, 'not_started', {
+		ass:icon(center_x, center_y - icon_size / 4, icon_size, '', {
 			color = fg, opacity = config.opacity.idle_indicator,
 		})
 		ass:txt(center_x, center_y + icon_size / 2, 8, t('Drop files or URLs to play here'), {
@@ -862,7 +867,7 @@ function render()
 	if state.is_audio and not state.has_image and not Manager.disabled.audio_indicator
 		and not (state.pause and options.pause_indicator == 'static') then
 		local smaller_side = math.min(display.width, display.height)
-		ass:icon(display.width / 2, display.height / 2, smaller_side / 4, 'graphic_eq', {
+		ass:icon(display.width / 2, display.height / 2, smaller_side / 4, '', {
 			color = fg, opacity = config.opacity.audio_indicator,
 		})
 	end

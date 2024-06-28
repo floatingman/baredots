@@ -176,22 +176,6 @@ function VolumeSlider:render()
 		})
 	end
 
-	-- Disabled stripes for no audio
-	if not state.has_audio then
-		local fg_100_path = create_nudged_path(self.border_size, state.radius)
-		local texture_opts = {
-			size = 200,
-			color = 'ffffff',
-			opacity = visibility * 0.1,
-			anchor_x = ax,
-			clip = '\\clip(' .. fg_100_path.scale .. ',' .. fg_100_path.text .. ')',
-		}
-		ass:texture(ax, ay, bx, by, 'a', texture_opts)
-		texture_opts.color = '000000'
-		texture_opts.anchor_x = ax + texture_opts.size / 28
-		ass:texture(ax, ay, bx, by, 'a', texture_opts)
-	end
-
 	return ass
 end
 
@@ -227,7 +211,7 @@ function Volume:update_dimensions()
 	local available_height = max_y - min_y
 	local max_height = available_height * 0.8
 	local height = round(math.min(self.size * 8, max_height))
-	self.enabled = height > self.size * 2 -- don't render if too small
+	self.enabled = state.has_audio and height > self.size * 2 -- don't render if too small
 	local margin = (self.size / 2) + Elements:v('window_border', 'size', 0)
 	self.ax = round(options.volume == 'left' and margin or display.width - margin - self.size)
 	self.ay = min_y + round((available_height - height) / 2)
@@ -260,20 +244,27 @@ function Volume:render()
 	local ass = assdraw.ass_new()
 	local width_half = (mute_rect.bx - mute_rect.ax) / 2
 	local height_half = (mute_rect.by - mute_rect.ay) / 2
-	local icon_size = math.min(width_half, height_half) * 1.5
-	local icon_name, horizontal_shift = 'volume_up', 0
+	local icon_size = math.min(width_half, height_half)
+	local icon_name = ''
+	local icon_back = ''
 	if state.mute then
-		icon_name = 'volume_off'
+		icon_name = ''
+		icon_back = ''
 	elseif state.volume <= 0 then
-		icon_name, horizontal_shift = 'volume_mute', height_half * 0.25
-	elseif state.volume <= 60 then
-		icon_name, horizontal_shift = 'volume_down', height_half * 0.125
+		icon_name = ''
+	elseif state.volume <= 33 then
+		icon_name = ''
+	elseif state.volume <= 66 then
+		icon_name = ''
+	elseif state.volume > 100 then
+		icon_name = ''
+		icon_back = ''
 	end
 	local underlay_opacity = {main = visibility * 0.3, border = visibility}
-	ass:icon(mute_rect.ax + width_half, mute_rect.ay + height_half, icon_size, 'volume_up',
+	ass:icon(mute_rect.ax + width_half, mute_rect.ay + height_half, icon_size, icon_back,
 		{border = options.text_border * state.scale, opacity = underlay_opacity, align = 5}
 	)
-	ass:icon(mute_rect.ax + width_half - horizontal_shift, mute_rect.ay + height_half, icon_size, icon_name,
+	ass:icon(mute_rect.ax + width_half, mute_rect.ay + height_half, icon_size, icon_name,
 		{opacity = visibility, align = 5}
 	)
 	return ass

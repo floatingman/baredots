@@ -51,7 +51,8 @@ defaults = {
 	top_bar = 'no-border',
 	top_bar_size = 40,
 	top_bar_persistency = '',
-	top_bar_controls = true,
+	top_bar_controls = 'right',
+	top_bar_position = true,
 	top_bar_title = 'yes',
 	top_bar_alt_title = '',
 	top_bar_alt_title_place = 'below',
@@ -125,6 +126,9 @@ if options.total_time and options.destination_time == 'playtime-remaining' then
 	options.destination_time = 'total'
 elseif not itable_index_of({'total', 'playtime-remaining', 'time-remaining'}, options.destination_time) then
 	options.destination_time = 'playtime-remaining'
+end
+if not itable_index_of({'left', 'right'}, options.top_bar_controls) then
+	options.top_bar_controls = options.top_bar_controls == 'yes' and 'right' or nil
 end
 -- Ensure required environment configuration
 if options.autoload then mp.commandv('set', 'keep-open-pause', 'no') end
@@ -373,6 +377,7 @@ state = {
 	cache = nil,
 	cache_buffering = 100,
 	cache_underrun = false,
+	cache_duration = nil,
 	core_idle = false,
 	eof_reached = false,
 	render_delay = config.render_delay,
@@ -430,22 +435,24 @@ function update_fullormaxed()
 end
 
 function update_human_times()
+	state.speed = state.speed or 1
 	if state.time then
-		state.time_human = format_time(state.time, state.duration)
+		local max_seconds = state.duration
 		if state.duration then
-			local speed = state.speed or 1
 			if options.destination_time == 'playtime-remaining' then
-				state.destination_time_human = format_time((state.time - state.duration) / speed, state.duration)
+				max_seconds = state.speed >= 1 and state.duration or state.duration / state.speed
+				state.destination_time_human = format_time((state.time - state.duration) / state.speed, max_seconds)
 			elseif options.destination_time == 'total' then
-				state.destination_time_human = format_time(state.duration, state.duration)
+				state.destination_time_human = format_time(state.duration, max_seconds)
 			else
-				state.destination_time_human = format_time(state.time - state.duration, state.duration)
+				state.destination_time_human = format_time(state.time - state.duration, max_seconds)
 			end
 		else
 			state.destination_time_human = nil
 		end
+		state.time_human = format_time(state.time, max_seconds)
 	else
-		state.time_human = nil
+		state.time_human, state.destination_time_human = nil, nil
 	end
 end
 
@@ -764,6 +771,7 @@ mp.observe_property('demuxer-cache-state', 'native', function(prop, cache_state)
 	if cache_state then
 		cached_ranges, bof, eof = cache_state['seekable-ranges'], cache_state['bof-cached'], cache_state['eof-cached']
 		set_state('cache_underrun', cache_state['underrun'])
+		set_state('cache_duration', not cache_state.eof and cache_state['cache-duration'] or nil)
 	else
 		cached_ranges = {}
 	end
@@ -771,6 +779,7 @@ mp.observe_property('demuxer-cache-state', 'native', function(prop, cache_state)
 	if not (state.duration and (#cached_ranges > 0 or state.cache == 'yes' or
 			(state.cache == 'auto' and state.is_stream))) then
 		if state.uncached_ranges then set_state('uncached_ranges', nil) end
+		set_state('cache_duration', nil)
 		return
 	end
 
@@ -1084,6 +1093,11 @@ end)
 mp.register_script_message('flash-elements', function(elements) Elements:flash(comma_split(elements)) end)
 mp.register_script_message('overwrite-binding', function(name, command) key_binding_overwrites[name] = command end)
 mp.register_script_message('disable-elements', function(id, elements) Manager:disable(id, elements) end)
+mp.register_script_message('get-locale', function(script, path)
+	local locale = intl.get_locale(path)
+	local json = utils.format_json(locale)
+	mp.commandv('script-message-to', script, 'uosc-locale', json)
+end)
 
 --[[ ELEMENTS ]]
 

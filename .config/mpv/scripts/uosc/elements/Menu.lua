@@ -175,7 +175,7 @@ function Menu:update(data)
 		else
 			menu.id = 'main'
 		end
-		menu.icon = 'chevron_right'
+		menu.icon = ''
 
 		-- Normalize `search_debounce`
 		if type(menu_data.search_debounce) == 'number' then
@@ -845,7 +845,7 @@ end
 function Menu:search_backspace(event, word_mode)
 	local pos, old_query = #self.current.search.query, self.current.search.query
 	local is_palette = self.current.search_style == 'palette'
-	if word_mode then
+	if word_mode and #old_query > 1 then
 		local word_pat, other_pat = '[^%c%s%p]+$', '[%c%s%p]+$'
 		local init_pat = old_query:sub(#old_query):match(word_pat) and word_pat or other_pat
 		-- First we match all same type consecutive chars at the end
@@ -1221,6 +1221,15 @@ function Menu:render()
 					opacity = highlight_opacity * menu_opacity,
 					clip = item_clip,
 				})
+
+				-- Selected item indicator line
+				if is_selected then
+					local size = round(2 * state.scale)
+					local v_padding = math.min(state.radius, math.ceil(self.item_height / 3))
+					ass:rect(ax + self.padding + 4, item_ay + v_padding, ax + self.padding + size + 4, item_by - v_padding, {
+						radius = 2, color = fg, opacity = menu_opacity, clip = item_clip,
+					})
+				end
 			end
 
 			-- Icon
@@ -1229,9 +1238,9 @@ function Menu:render()
 					and menu_rect.ax + (menu_rect.bx - menu_rect.ax) / 2
 					or content_bx - (icon_size / 2)
 				if item.icon == 'spinner' then
-					ass:spinner(x, item_center_y, icon_size * 1.5, {color = font_color, opacity = menu_opacity * 0.8})
+					ass:spinner(x, item_center_y, icon_size * 0.8, {color = font_color, opacity = menu_opacity * 0.8})
 				else
-					ass:icon(x, item_center_y, icon_size * 1.5, item.icon, {
+					ass:icon(x, item_center_y, icon_size * 0.8, item.icon, {
 						color = font_color, opacity = menu_opacity, clip = item_clip,
 					})
 				end
@@ -1318,7 +1327,7 @@ function Menu:render()
 					end
 				end
 
-				ass:icon(rect.ax + icon_size / 2, rect.cy, icon_size, 'search', {
+				ass:icon(rect.ax + icon_size / 2, rect.cy, icon_size, '', {
 					color = fg,
 					opacity = icon_opacity,
 					clip = '\\clip(' ..

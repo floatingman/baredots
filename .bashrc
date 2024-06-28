@@ -93,3 +93,5 @@ if [[ -d "$HOME/.fzf/bin/" ]]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source /home/dnewman/.config/broot/launcher/bash/br

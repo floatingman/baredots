@@ -107,7 +107,7 @@ ytdl_lowercase_directories=false
 rclone_config="${HOME}/.config/rclone/rclone.conf"
 
 # Should we `copy` or `move` files?
-rclone_command="copy"
+rclone_command="move"
 
 # Where to store downloaded files on the rclone remote
 rclone_destination="local:/mnt/mediaexpansion/Video/YouTube"

@@ -14,8 +14,8 @@
 // License along with this library.
 
 //!HOOK CHROMA
-//!BIND HOOKED
 //!BIND LUMA
+//!BIND HOOKED
 //!SAVE LOWRES_Y
 //!WIDTH LUMA.w
 //!WHEN CHROMA.w LUMA.w <
@@ -52,8 +52,8 @@ vec4 hook() {
 }
 
 //!HOOK CHROMA
-//!BIND HOOKED
 //!BIND LOWRES_Y
+//!BIND HOOKED
 //!SAVE LOWRES_Y
 //!WHEN CHROMA.w LUMA.w <
 //!DESC KrigBilateral Downscaling Y pass 2
@@ -98,19 +98,18 @@ vec4 hook() {
 //!OFFSET ALIGN
 //!DESC KrigBilateral Upscaling UV
 
-#define sqr(x)      dot(x,x)
 #define sigma_nsq   256.0/(255.0*255.0)
-
 #define N           8
+#define sqr(x)      dot(x,x)
 
 #define M(i,j)      Mx[min(i,j)*N + max(i,j) - (min(i,j)*(min(i,j)+1))/2]
 
-#define C(i,j)      (inversesqrt(1.0 + (X[i].y + X[j].y) / Var) * exp(-0.5 * (sqr(X[i].x - X[j].x) / (localVar + X[i].y + X[j].y + sigma_nsq) + sqr((coords[i] - coords[j]) / radius))) + (X[i].x - y) * (X[j].x - y) / (Var + sigma_nsq))
-#define c(i)        (inversesqrt(1.0 + X[i].y / Var) * exp(-0.5 * (sqr(X[i].x - y) / (localVar + X[i].y + sigma_nsq) + sqr((coords[i] - offset) / radius))))
+#define C(i,j)      (inversesqrt(1.0 + (X[i].y + X[j].y) / Var) * exp(-0.5 * (sqr(X[i].x - X[j].x) / (localVar + X[i].y + X[j].y) + sqr((coords[i] - coords[j]) / radius))) /*+ (X[i].x - y) * (X[j].x - y) / Var*/)  // commented out part works well only on test patterns
+#define c(i)        (inversesqrt(1.0 + X[i].y / Var) * exp(-0.5 * (sqr(X[i].x - y) / (localVar + X[i].y) + sqr((coords[i] - offset) / radius))))
 
 #define getnsum(i)  X[i] = vec4(LOWRES_Y_tex(LOWRES_Y_pt*(pos+coords[i]+vec2(0.5))).xy, \
                                 CHROMA_tex(CHROMA_pt*(pos+coords[i]+vec2(0.5))).xy); \
-                    w = clamp(1.5 - abs(coords[i] - offset), 0.0, 1.0); \
+                    w = clamp(1.5 - abs(coords[i]), 0.0, 1.0); \
                     total += w.x*w.y*vec4(X[i].x, X[i].x * X[i].x, X[i].y, 1.0);
 
 #define I3(f, n)    f(n) f(n+1) f(n+2)
@@ -133,9 +132,9 @@ vec4 hook() {
     I9(getnsum, 0)
 
     total.xyz /= total.w;
-    float localVar = max(total.y - total.x * total.x, 1e-6);
+    float localVar = abs(total.y - total.x * total.x) + sigma_nsq;
     float Var = localVar + total.z;
-    float radius = 1.0;
+    float radius = 1.5;  // mix(1.5, 1.0, sigma_nsq / Var);
 
     float y = LUMA_texOff(0).x;
     float Mx[(N*(N+1))/2];
