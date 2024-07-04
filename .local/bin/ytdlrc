@@ -18,7 +18,7 @@
 # `----------------------------------------------------------------------------'
 
 # Enable debugging for verbose output
-debug=true
+debug=false
 
 # Working directory for the script
 ytdl_root_dir="${HOME}/syncs/Sync/ytdlrc"

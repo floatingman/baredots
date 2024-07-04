@@ -135,7 +135,7 @@ mode "focused" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+m mode "focused"
+# bindsym $mod+m mode "focused"
 
 # reload the configuration file
 bindsym Mod1+Shift+c reload
