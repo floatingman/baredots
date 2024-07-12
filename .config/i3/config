@@ -250,8 +250,8 @@ for_window [title="^edit_text$"] floating enable
 hide_edge_borders both
 
 # Assign MPV to workspace 4 and focus
-assign [class="mpv"] 3
-for_window [class="mpv"] focus
+# assign [class="mpv"] 3
+# for_window [class="mpv"] focus
 
 # include $HOME/.config/i3/themes/catpuccin-frappe
 # include $HOME/.config/i3/themes/catpuccin-latte
