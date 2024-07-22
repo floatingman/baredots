@@ -145,7 +145,10 @@ zinit ice as"command" from"gh-r" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
 
-source /home/dnewman/.config/broot/launcher/bash/br
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"

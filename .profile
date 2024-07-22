@@ -68,3 +68,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+. "$HOME/.atuin/bin/env"

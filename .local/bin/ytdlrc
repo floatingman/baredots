@@ -222,7 +222,6 @@ download_all_the_things() {
     --embed-thumbnail \
     --cookies "~/SynologyDrive/Backup/youtube-dl/cookies.txt" \
     --match-filter "!is_live & title != 'Liked videos' & title != 'Favorites'" \
-    --extractor-args youtube:player_client=ios,web\
     --merge-output-format "mkv" \
     "$ytdl_debug_flags" \
     $ytdl_subtitle_flags \
