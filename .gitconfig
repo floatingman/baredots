@@ -1,6 +1,6 @@
 [user]
   email = dan@danlovesprogramming.com
-  name = Daniel Newman
+  name = floatingman
 [credential]
   username = floatingman
 [core]
@@ -192,4 +192,4 @@
 [url "git@github.com:floatingman"]
     insteadOf = https://github.com/floatingman
 [init]
-	defaultBranch = main
+	defaultBranch = master
