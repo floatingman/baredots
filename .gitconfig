@@ -192,4 +192,4 @@
 [url "git@github.com:floatingman"]
     insteadOf = https://github.com/floatingman
 [init]
-	defaultBranch = master
+	defaultBranch = main
