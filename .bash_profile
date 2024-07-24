@@ -2,6 +2,4 @@
 
 [ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
 
-source /home/dnewman/.config/broot/launcher/bash/br
-
 . "$HOME/.atuin/bin/env"
