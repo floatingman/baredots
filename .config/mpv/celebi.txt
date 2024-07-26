@@ -1,2 +1,2 @@
-volume=40.000000
 mute=no
+volume=50.000000
