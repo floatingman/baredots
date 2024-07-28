@@ -44,7 +44,7 @@ return {
 		hue = 1.0,
 		saturation = 0.5,
 	},
-	window_background_opacity = 0.92,
+	window_background_opacity = 1.00,
 	-- window_background_opacity = 1.0,
 	-- window_background_opacity = 0.78,
 	-- window_background_opacity = 0.20,
