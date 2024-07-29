@@ -1,5 +1,5 @@
 # Set the shell to zsh
-export SHELL=/bin/zsh
+# export SHELL=/bin/zsh
 
 # Something for me to see where aliases get defined
 # Use 256 colors
@@ -149,6 +149,6 @@ zinit light starship/starship
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-. "$HOME/.atuin/bin/env"
+# . "$HOME/.atuin/bin/env"
 
-eval "$(atuin init zsh)"
+# eval "$(atuin init zsh)"
