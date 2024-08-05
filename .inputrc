@@ -1,10 +1,10 @@
-set editing-mode emacs
-set keymap emacs
+set editing-mode vi
+set keymap vi
 
-# $if mode=vi
-#   set keymap vi-insert
-#   "kj": vi-movement-mode
-# $endif
+$if mode=vi
+  set keymap vi-insert
+  "kj": vi-movement-mode
+$endif
 
 # Show all completions as soon as I press tab, even if there's more than one
 set show-all-if-ambiguous on
