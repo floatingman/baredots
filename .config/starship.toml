@@ -1,7 +1,7 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
-format = '''[╭──$os \([$username@$hostname](bold blue)\)-\[$directory\]-($kubernetes)(-$git_branch$git_metrics$git_status)(-$nix_shell)](blue) $cmd_duration
+format = '''[╭── $os \([$username@$hostname](bold blue)\)-\[$directory\]-($kubernetes)(-$git_branch$git_metrics$git_status)(-$nix_shell)](blue) $cmd_duration
 [╰─](blue)[$shell](bold blue) '''
 
 # A minimal left prompt
