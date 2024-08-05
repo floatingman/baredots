@@ -4,11 +4,11 @@
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 
 # Load blesh
-# if $_isarch; then
-# 	[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
-# else
-# 	[[ -d $HOME/.local/share/blesh ]] && source "$HOME/.local/share/blesh/ble.sh"
-# fi
+if $_isarch; then
+	[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
+else
+	[[ -d $HOME/.local/share/blesh ]] && source "$HOME/.local/share/blesh/ble.sh"
+fi
 
 # User specific aliases, environment, and functions
 homebrew="$(command -v {/opt/homebrew,/usr/local}/bin/brew 2>/dev/null)"
@@ -75,11 +75,9 @@ set -o noclobber
 # Load zoxide
 eval "$(zoxide init bash)"
 
-# Load starship
-eval "$(starship init bash)"
 
 # Startup blesh
-# [[ ${BLE_VERSION-} ]] && ble-attach
+[[ ${BLE_VERSION-} ]] && ble-attach
 
 # Start Sway
 #[ "$(tty)" = "/dev/tty1" ] && exec sway
@@ -96,6 +94,9 @@ fi
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# Load starship
+eval "$(starship init bash)"
 
 # [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 # eval "$(atuin init bash)"
