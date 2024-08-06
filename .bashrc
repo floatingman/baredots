@@ -75,7 +75,6 @@ set -o noclobber
 # Load zoxide
 eval "$(zoxide init bash)"
 
-
 # Startup blesh
 [[ ${BLE_VERSION-} ]] && ble-attach
 
