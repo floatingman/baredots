@@ -193,3 +193,5 @@
     insteadOf = https://github.com/floatingman
 [init]
 	defaultBranch = main
+[pull]
+	rebase = true
